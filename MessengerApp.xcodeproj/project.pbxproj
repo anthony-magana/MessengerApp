@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		92FD61BA2830CFC1001F939C /* MessengerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FD61B92830CFC1001F939C /* MessengerAppApp.swift */; };
-		92FD61BC2830CFC1001F939C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FD61BB2830CFC1001F939C /* ContentView.swift */; };
+		92FD61BC2830CFC1001F939C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FD61BB2830CFC1001F939C /* LoginView.swift */; };
 		92FD61BE2830CFC5001F939C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FD61BD2830CFC5001F939C /* Assets.xcassets */; };
 		92FD61C12830CFC5001F939C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FD61C02830CFC5001F939C /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		92FD61B62830CFC1001F939C /* MessengerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MessengerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92FD61B92830CFC1001F939C /* MessengerAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessengerAppApp.swift; sourceTree = "<group>"; };
-		92FD61BB2830CFC1001F939C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		92FD61BB2830CFC1001F939C /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		92FD61BD2830CFC5001F939C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		92FD61C02830CFC5001F939C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,7 +52,7 @@
 			isa = PBXGroup;
 			children = (
 				92FD61B92830CFC1001F939C /* MessengerAppApp.swift */,
-				92FD61BB2830CFC1001F939C /* ContentView.swift */,
+				92FD61BB2830CFC1001F939C /* LoginView.swift */,
 				92FD61BD2830CFC5001F939C /* Assets.xcassets */,
 				92FD61BF2830CFC5001F939C /* Preview Content */,
 			);
@@ -137,7 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92FD61BC2830CFC1001F939C /* ContentView.swift in Sources */,
+				92FD61BC2830CFC1001F939C /* LoginView.swift in Sources */,
 				92FD61BA2830CFC1001F939C /* MessengerAppApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
