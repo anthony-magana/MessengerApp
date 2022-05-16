@@ -10,6 +10,6 @@ MessengerApp is a mobile messaging app for IPhones on IOS.
 ## Application Views
 
 ### Create Account View
-<img src="https://i.imgur.com/BAM52Ql.png" title="Create Account Page" width=40%  />
+<img src="https://i.imgur.com/BAM52Ql.png" title="Create Account Page" width=30%  />
 
 
