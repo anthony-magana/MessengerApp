@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9201C2AE283379FC00F80901 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9201C2AD283379FC00F80901 /* FirebaseAuth */; };
+		9201C2B0283379FC00F80901 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9201C2AF283379FC00F80901 /* FirebaseFirestore */; };
+		9201C2B2283379FC00F80901 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9201C2B1283379FC00F80901 /* FirebaseStorage */; };
 		923F29692831F18F00187E62 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923F29682831F18F00187E62 /* ImagePicker.swift */; };
 		92FD61BA2830CFC1001F939C /* MessengerAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FD61B92830CFC1001F939C /* MessengerAppApp.swift */; };
 		92FD61BC2830CFC1001F939C /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92FD61BB2830CFC1001F939C /* LoginView.swift */; };
 		92FD61BE2830CFC5001F939C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FD61BD2830CFC5001F939C /* Assets.xcassets */; };
 		92FD61C12830CFC5001F939C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 92FD61C02830CFC5001F939C /* Preview Assets.xcassets */; };
-		92FD61C92830E7F7001F939C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 92FD61C82830E7F7001F939C /* FirebaseAuth */; };
-		92FD61CB2830E7F7001F939C /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 92FD61CA2830E7F7001F939C /* FirebaseStorage */; };
 		92FD61CD2830EB98001F939C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 92FD61CC2830EB98001F939C /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
@@ -32,8 +33,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				92FD61C92830E7F7001F939C /* FirebaseAuth in Frameworks */,
-				92FD61CB2830E7F7001F939C /* FirebaseStorage in Frameworks */,
+				9201C2AE283379FC00F80901 /* FirebaseAuth in Frameworks */,
+				9201C2B0283379FC00F80901 /* FirebaseFirestore in Frameworks */,
+				9201C2B2283379FC00F80901 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,8 +96,9 @@
 			);
 			name = MessengerApp;
 			packageProductDependencies = (
-				92FD61C82830E7F7001F939C /* FirebaseAuth */,
-				92FD61CA2830E7F7001F939C /* FirebaseStorage */,
+				9201C2AD283379FC00F80901 /* FirebaseAuth */,
+				9201C2AF283379FC00F80901 /* FirebaseFirestore */,
+				9201C2B1283379FC00F80901 /* FirebaseStorage */,
 			);
 			productName = MessengerApp;
 			productReference = 92FD61B62830CFC1001F939C /* MessengerApp.app */;
@@ -126,7 +129,7 @@
 			);
 			mainGroup = 92FD61AD2830CFC0001F939C;
 			packageReferences = (
-				92FD61C72830E7F7001F939C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9201C2AC283379FC00F80901 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 92FD61B72830CFC1001F939C /* Products */;
 			projectDirPath = "";
@@ -360,7 +363,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		92FD61C72830E7F7001F939C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+		9201C2AC283379FC00F80901 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
 			requirement = {
@@ -371,14 +374,19 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		92FD61C82830E7F7001F939C /* FirebaseAuth */ = {
+		9201C2AD283379FC00F80901 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 92FD61C72830E7F7001F939C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 9201C2AC283379FC00F80901 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
 		};
-		92FD61CA2830E7F7001F939C /* FirebaseStorage */ = {
+		9201C2AF283379FC00F80901 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 92FD61C72830E7F7001F939C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			package = 9201C2AC283379FC00F80901 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		9201C2B1283379FC00F80901 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9201C2AC283379FC00F80901 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
 		};
 /* End XCSwiftPackageProductDependency section */
