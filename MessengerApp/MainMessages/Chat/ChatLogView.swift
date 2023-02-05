@@ -64,11 +64,9 @@ class ChatLogViewModel: ObservableObject {
                     }
                 })
                 
-//                querySnapshot?.documents.forEach({ QueryDocumentSnapshot in
-//                    let data = QueryDocumentSnapshot.data()
-//                    let docId = QueryDocumentSnapshot.documentID
-//                    self.chatMessages.append(.init(documentId: docId, data: data))
-//                })
+                DispatchQueue.main.async {
+                    self.count += 1
+                }
             }
     }
     
@@ -89,7 +87,11 @@ class ChatLogViewModel: ObservableObject {
                 self.errorMessage = "Failed to save message to Firestore \(err)"
                 return
             }
+            
+            self.persistRecentMessage()
+            
             self.chatText = ""
+            self.count += 1
             print("Successfully sent and saved message")
         }
         
@@ -106,6 +108,40 @@ class ChatLogViewModel: ObservableObject {
             print("Recipient Successfully recieved message")
         }
     }
+    
+    private func persistRecentMessage() {
+        guard let chatUser = chatUser else { return }
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {
+            return
+        }
+        guard let toId = self.chatUser?.uid else {
+            return
+        }
+        let document = FirebaseManager.shared.firestore
+            .collection("recent_messages")
+            .document(uid)
+            .collection("messages")
+            .document(toId)
+        let data = [
+            "timeStamp": Timestamp(),
+            FirebaseConstants.text: self.chatText,
+            FirebaseConstants.fromId: uid,
+            FirebaseConstants.toId: toId,
+            "profileImageUrl": chatUser.profileImageUrl,
+            "username": chatUser.email
+        ] as [String : Any]
+        
+        // TODO: save another similar dictionay for the recipient of this message
+        
+        document.setData(data) { error in
+            if let error = error {
+                self.errorMessage = "Failed to save recent message: \(error)"
+                return
+            }
+        }
+    }
+    
+    @Published var count = 0
 }
 
 struct ChatLogView: View {
@@ -126,43 +162,33 @@ struct ChatLogView: View {
         }
         .navigationTitle(chatUser?.username ?? "")
             .navigationBarTitleDisplayMode(.inline)
+//            .navigationBarItems(trailing: Button(action: {
+//                vm.count += 1
+//            }, label: {
+//                Text("Count: \(vm.count)")
+//            }))
     }
+    
+    static let emptyScrollToString = "Empty"
     
     private var chatMessagesView: some View {
         VStack {
             ScrollView{
-                ForEach(vm.chatMessages) { message in
+                ScrollViewReader { ScrollViewProxy in
                     VStack {
-                        if message.fromId == FirebaseManager.shared.auth.currentUser?.uid{
-                            HStack {
-                                Spacer()
-                                HStack {
-                                    Text(message.text)
-                                        .foregroundColor(.white)
-                                }
-                                .padding()
-                                .background(Color.blue)
-                                .cornerRadius(8)
-                                
-                            }
-                        } else {
-                            HStack {
-                                HStack {
-                                    Text(message.text)
-                                        .foregroundColor(.black)
-                                }
-                                .padding()
-                                .background(Color.white)
-                                .cornerRadius(8)
-                                Spacer()
-                            }
+                        ForEach(vm.chatMessages) { message in
+                            MessageView(message: message)
+                        }
+                        
+                        HStack {Spacer()}
+                            .id(Self.emptyScrollToString)
+                    }
+                    .onReceive(vm.$count) { _ in
+                        withAnimation(.easeOut(duration: 0.5)) {
+                            ScrollViewProxy.scrollTo(Self.emptyScrollToString, anchor: .bottom)
                         }
                     }
-                    .padding(.horizontal)
-                    .padding(.top, 8)
                 }
-                
-                HStack {Spacer()}
             }
             .background(Color(.init(white: 0.95, alpha: 1)))
             .safeAreaInset(edge: .bottom) {
@@ -191,6 +217,42 @@ struct ChatLogView: View {
         }
         .padding(.horizontal)
         .padding(.vertical, 6)
+    }
+}
+
+struct MessageView: View {
+    
+    let message: ChatMessage
+    
+    var body: some View {
+        VStack {
+            if message.fromId == FirebaseManager.shared.auth.currentUser?.uid{
+                HStack {
+                    Spacer()
+                    HStack {
+                        Text(message.text)
+                            .foregroundColor(.white)
+                    }
+                    .padding()
+                    .background(Color.blue)
+                    .cornerRadius(8)
+                    
+                }
+            } else {
+                HStack {
+                    HStack {
+                        Text(message.text)
+                            .foregroundColor(.black)
+                    }
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(8)
+                    Spacer()
+                }
+            }
+        }
+        .padding(.horizontal)
+        .padding(.top, 8)
     }
 }
 
